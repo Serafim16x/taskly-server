@@ -30,9 +30,9 @@ app.use('/api/v1/tasks', taskRouter);
 
 
 app.get('/', (req, res) => {
-    res.status(200).json({ message: 'Welcome to Taskly API'});
-    });
-    
+res.status(200).json({ message: 'Welcome to Taskly API'});
+});
+
 
 app.use('*', (req, res) => {
     res.status(404).json({ message: 'Not found' });
@@ -41,7 +41,17 @@ app.use('*', (req, res) => {
 // Error handler
 app.use(errorHandler);
 
+// Root route for testing API
+app.get('/api', (req, res) => {
+    res.status(200).json({ message: 'Hello, World!' });
+});
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Сервер слушает на порту ${PORT}`);
     });
     
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Сервер слушает на порту ${PORT}`);
+});
